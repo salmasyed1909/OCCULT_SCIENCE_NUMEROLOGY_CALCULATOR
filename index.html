@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaldean Numerology System Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #858dd1, #004e92);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .header {
+            background: #ffcc00;
+            color: #290563;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 15px 15px 0 0;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .logo {
+            width: 120px;
+            margin-right: 10px;
+        }
+        .subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: #ffcc00;
+            margin-top: 10px;
+        }
+        .input-section {
+            margin-top: 20px;
+        }
+        .input-field {
+            margin-bottom: 15px;
+        }
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input, button {
+            padding: 12px;
+            margin: 10px 0;
+            width: 80%;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+        input {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        button {
+            background: #32cd32;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #28a428;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background: rgba(234, 234, 236, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        @keyframes pointerMove {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0px); }
+        }
+        .pointer {
+            display: inline-block;
+            animation: pointerMove 1s infinite;
+            font-size: 22px;
+            color: #ffcc00;
+        }
+        .footer {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .social-icons a {
+            margin: 5px;
+            color: #ffcc00;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 0;
+            background-color: #222;
+        }
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .social-icons img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .logo {
+                width: 90px;
+            }
+            .subtitle {
+                font-size: 16px;
+            }
+            .input-section {
+                width: 100%;
+            }
+            input, button {
+                width: 100%;
+            }
+            .result {
+                font-size: 16px;
+            }
+        }
+        /* CSS for the numerology result and famous people list */
+#result {
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#result p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+}
+
+#result p strong {
+    font-weight: bold;
+    color: #333;
+}
+
+#famous-people-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#famous-people-list li {
+    padding: 5px;
+    font-size: 16px;
+    color: #444;
+}
+
+/* Highlighted sections in yellow */
+#result p {
+    background-color: yellow;
+}
+
+/* Apply yellow color for script section */
+script {
+    color: yellow;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.chart-container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.numerology-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.numerology-table th, .numerology-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.numerology-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #555;
+}
+
+.numerology-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.numerology-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.numerology-table td {
+    color: #333;
+}
+
+
+
+        @media screen and (max-width: 480px) {
+            .header {
+                font-size: 20px;
+            }
+            .input-field input {
+                font-size: 14px;
+            }
+            .pointer {
+                font-size: 18px;
+            }
+            .social-icons a {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="occult.png.png" class="logo" alt="Logo">
+        <div class="subtitle"><h1>Occult Science of Numerology</h1></div>
+    </div>
+    <div class="container">
+        <div class="header">Chaldean Numerology Calculator</div>
+        <div class="input-section">
+            <div class="input-field">
+                <label for="dob">Enter Date of Birth (DD/MM/YYYY):</label>
+                <input type="text" id="dob" placeholder="e.g., 19/12/2007" required>
+            </div>
+            
+            <div class="input-field">
+                <label for="name">Enter Your Name:</label>
+                <input type="text" id="name" placeholder="Enter full name" required>
+            </div>
+            
+            <div class="button-section">
+                <button onclick="calculateNumerology()">Calculate</button>
+            </div>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    <div class="footer">
+        <p>For knowing your perfect name, consult us on:</p>
+        <div class="social-icons">
+            <a href="https://wa.me/7731967555" target="_blank">
+                <img src="icons/whatsapp.png" alt="Whatsapp">
+            </a>
+            <a href="https://www.facebook.com/raasoulkhaan/" target="_blank">
+                <img src="icons/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/rassuulnkhan333/?utm_source=qr&igshid=YzU1NGVlODEzOA%3D%3D#" target="_blank">
+                <img src="icons/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com/channel/UCvmGxhGy8-GUnRPd_cTCY-A" target="_blank">
+                <img src="icons/youtube.png" alt="YouTube">
+            </a>
+            <a href="https://www.linkedin.com/in/rassuul-n-khan-8a87a211a/" target="_blank">
+                <img src="icons/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://in.pinterest.com/Rassuulnkhan/" target="_blank">
+                <img src="icons/social.png" alt="Pinterest">
+            </a>
+            </div>
+            <p>&copy; 2025 Numerology Calculator. All rights reserved.</p>
+    
+    </div>
+    <script>
+        function calculateNumerology() {
+            let dob = document.getElementById("dob").value;
+            let name = document.getElementById("name").value.toUpperCase().replace(/[^A-Z]/g, "");
+            
+            let parts = dob.split("/");
+            if (parts.length !== 3) {
+                alert("Please enter DOB in DD/MM/YYYY format.");
+                return;
+            }
+            
+            let birthNumber = parseInt(parts[0]) % 9 || 9;
+            let destinyNumber = (parseInt(parts[0]) + parseInt(parts[1]) + parseInt(parts[2])) % 9 || 9;
+            
+            const chaldeanMap = { A:1, B:2, C:3, D:4, E:5, F:8, G:3, H:5, I:1, J:1, K:2, L:3, M:4, N:5, O:7, P:8, Q:1, R:2, S:3, T:4, U:6, V:6, W:6, X:5, Y:1, Z:7 };
+            let nameNumber = 0;
+            for (let i = 0; i < name.length; i++) {
+                nameNumber += chaldeanMap[name[i]] || 0;
+            }
+            nameNumber = nameNumber % 9 || 9;
+    
+            // Update the result section
+            document.getElementById("result").innerHTML = `
+                <p><strong>Your Birth Number:</strong> ${birthNumber} - ${getNumberMeaning(birthNumber)}</p>
+                <p><strong>Your Destiny Number:</strong> ${destinyNumber} - ${getNumberMeaning(destinyNumber)}</p>
+                <p><strong>Your Name Number:</strong> ${nameNumber} - ${getNumberMeaning(nameNumber)}</p>
+                <p><strong>Famous People with your Name Number:</strong></p>
+                <ul id="famous-people-list"></ul>
+            `;
+    
+            // Update famous people based on name number
+            updateFamousPeople(nameNumber);
+        }
+    
+        function getNumberMeaning(num) {
+            const meanings = {
+                1: "Leadership, independence, originality, and assertiveness.",
+                2: "Cooperation, sensitivity, balance, and diplomacy.",
+                3: "Creativity, self-expression, sociability, and joy.",
+                4: "Stability, reliability, hard work, and foundation-building.",
+                5: "Change, freedom, adaptability, and curiosity.",
+                6: "Responsibility, care, nurturing, and family-oriented.",
+                7: "Spirituality, introspection, analysis, and wisdom.",
+                8: "Power, authority, material success, and ambition.",
+                9: "Compassion, humanitarianism, idealism, and global awareness."
+            };
+            return meanings[num] || "Unknown number";
+        }
+    
+        function updateFamousPeople(nameNumber) {
+            const famousPeople = {
+                1: ["Sachin Tendulkar", "Narendra Modi", "Virat Kohli"],
+                2: ["Priyanka Chopra", "Amitabh Bachchan", "Rajinikanth"],
+                3: ["Rani Mukerji", "Shah Rukh Khan", "Kareena Kapoor"],
+                4: ["Mukesh Ambani", "Sushant Singh Rajput", "Kapil Dev"],
+                5: ["Madhuri Dixit", "Aishwarya Rai Bachchan", "Hrithik Roshan"],
+                6: ["Indira Gandhi", "Sridevi", "Deepika Padukone"],
+                7: ["Dharmendra", "Vikram Sarabhai", "Ravichandran Ashwin"],
+                8: ["Sunil Gavaskar", "Ratan Tata", "Mahatma Gandhi"],
+                9: ["Mother Teresa", "Mahatma Gandhi", "Dr. APJ Abdul Kalam"]
+            };
+    
+            let list = famousPeople[nameNumber] || [];
+            let famousListHTML = list.map(person => `<li>${person}</li>`).join("");
+            document.getElementById("famous-people-list").innerHTML = famousListHTML;
+        }
+    
+        </script>
+        
+    
+
+</body>
+</html>
+
+    
+</body>
+</html>
